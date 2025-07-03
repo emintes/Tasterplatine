@@ -13,15 +13,15 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Install ARM GCC Toolchain
-      uses: carlosperate/arm-none-eabi-gcc-action@v1
+    - name: Build STM32CubeIde project
+      uses: xanderhendriks/action-build-stm32cubeide@v11.0
       with:
-        release: '14.2.Rel1'
-
-    - name: Build Project
-      run: |
-        cd Debug
-        make
+        project-path: ''
+        project-target: 'Testplatine'
+      env:
+        ENV_VERSION_MAJOR: 1
+        ENV_VERSION_MINOR: 0
+        ENV_VERSION_BUGFIX: 0
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
