@@ -13,13 +13,15 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Install build tools
-      run: sudo apt-get update && sudo apt-get install -y build-essential cmake
+    - name: Install ARM GCC Toolchain
+        uses: carlosperate/arm-none-eabi-gcc-action@v1
+        with:
+          release: '14.2.Rel1'
 
-    - name: Build project
-      run: |
-        cd Debug
-        make all
+    - name: Build Project
+        run: |
+          cd Debug
+          make
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
