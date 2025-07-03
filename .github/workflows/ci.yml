@@ -16,7 +16,7 @@ jobs:
     - name: Build STM32CubeIde project
       uses: xanderhendriks/action-build-stm32cubeide@v11.0
       with:
-        project-path: ''
+        project-path: '/'
         project-target: 'Testplatine'
       env:
         ENV_VERSION_MAJOR: 1
