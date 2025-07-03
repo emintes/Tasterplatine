@@ -19,7 +19,7 @@ jobs:
     - name: Build project
       run: |
         cd Debug
-        make
+        make all
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
