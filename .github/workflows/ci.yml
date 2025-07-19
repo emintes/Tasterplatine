@@ -41,13 +41,12 @@ jobs:
         path: ./firmware
 
     - name: Run test
-      id: teststep
-      run: |
-        cd Tests
-        echo "insert test execution here"
-
-    - name: Upload test result artifact
-      uses: actions/upload-artifact@v4
+      uses: emintes/action-test-executor@v1
       with:
-        name: testresult
-        path: Tests/Testreport.html
+        name: 'Testplatine'
+      
+#    - name: Upload test result artifact
+#      uses: actions/upload-artifact@v4
+#      with:
+#        name: testresult
+#        path: Tests/Testreport.html
