@@ -40,11 +40,18 @@ jobs:
         name: build-artifact
         path: ./firmware
 
-    - name: Run test
-      uses: emintes/action-test-executor@main
-      with:
-        name: 'Testplatine'
-      
+    - name: Run Test Docker Container
+      run: |
+        docker build -t test-executor https://github.com/emintes/action-test-executor.git#main
+        docker run --rm --device=/dev --privileged test-executor Testplatine
+
+#    - name: Run test
+#      uses: emintes/action-test-executor@main
+#      with:
+#        name: 'Testplatine'
+
+
+
 #    - name: Upload test result artifact
 #      uses: actions/upload-artifact@v4
 #      with:
