@@ -41,7 +41,7 @@ jobs:
         path: ./firmware
 
     - name: Run test
-      uses: emintes/action-test-executor@master
+      uses: emintes/action-test-executor@main
       with:
         name: 'Testplatine'
       
