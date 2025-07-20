@@ -44,9 +44,11 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Run Test Docker Container
+      env:
+        test-path: "Tests"
       run: |
         docker build -t test-executor https://github.com/emintes/action-test-executor.git#main
-        docker run --rm --device=/dev --privileged -v "${{ github.workspace }}:/workspace/repo" test-executor Testplatine
+        docker run --rm --device=/dev --privileged -v "${{ github.workspace }}:/workspace/repo" test-executor ${{ env.test-path }}
 
 #    - name: Run test
 #      uses: emintes/action-test-executor@main
