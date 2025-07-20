@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <hasChanged>false</hasChanged>
+  <ProjectName>Testplatine</ProjectName>
+  <CreatedDateTime>2024-06-29T19:08:22.9848563+02:00</CreatedDateTime>
+  <LastModifiedDateTime>0001-01-01T00:00:00</LastModifiedDateTime>
+  <TestreportTemplatePath />
+  <TesterNameSource>2</TesterNameSource>
+  <TesterNameStr>Enrico</TesterNameStr>
+  <ProjectFolder>C:\Users\Laptop\Documents\Emintes_lokal\4_Testplattform\Messe_Vorfuehrplatinen\Tasterplatine\Github\Tests</ProjectFolder>
+  <AutoCreateReport>true</AutoCreateReport>
+  <CmdExeCommand1 />
+  <CmdExeParameter1 />
+  <CmdShowConsole1>false</CmdShowConsole1>
+  <CmdExeCommand2 />
+  <CmdExeParameter2 />
+  <CmdShowConsole2>false</CmdShowConsole2>
+  <CmdExeCommand3 />
+  <CmdExeParameter3 />
+  <CmdShowConsole3>false</CmdShowConsole3>
+  <TeststepList>
+    <Teststep>
+      <Active>false</Active>
+      <Name>MainTest downloadFirmware</Name>
+      <NumberOfRuns>1</NumberOfRuns>
+    </Teststep>
+    <Teststep>
+      <Active>true</Active>
+      <Name>MainTest powerSupply</Name>
+      <NumberOfRuns>1</NumberOfRuns>
+    </Teststep>
+    <Teststep>
+      <Active>true</Active>
+      <Name>MainTest idleConditions</Name>
+      <NumberOfRuns>1</NumberOfRuns>
+    </Teststep>
+    <Teststep>
+      <Active>false</Active>
+      <Name>MainTest buttonLeftManuel</Name>
+      <NumberOfRuns>1</NumberOfRuns>
+    </Teststep>
+    <Teststep>
+      <Active>false</Active>
+      <Name>MainTest buttonRightManuel</Name>
+      <NumberOfRuns>1</NumberOfRuns>
+    </Teststep>
+    <Teststep>
+      <Active>true</Active>
+      <Name>MainTest buttonLeft</Name>
+      <NumberOfRuns>1</NumberOfRuns>
+    </Teststep>
+    <Teststep>
+      <Active>true</Active>
+      <Name>MainTest buttonRight</Name>
+      <NumberOfRuns>1</NumberOfRuns>
+    </Teststep>
+  </TeststepList>
+  <ExcludedTeststeps />
+  <AdditionalFiles />
+</ProjectSettings>

@@ -1,0 +1,37 @@
+from testframework import *
+
+LEFT = 1
+RIGHT = 2
+
+POS_LEFT_FREE   = 11.0
+POS_LEFT_UP     = 5.0
+POS_LEFT_DOWN   = 2.9
+POS_RIGHT_FREE  = 3.5
+POS_RIGHT_UP    = 9.5
+POS_RIGHT_DOWN  = 11.4
+PWM_FREQUENCY   = 50
+
+PIN_SERVO_LEFT  = OUT1
+PIN_SERVO_RIGHT = OUT2
+PIN_BUTTON_LEFT = IN3
+PIN_BUTTON_RIGHT= IN5
+PIN_3V3_SUPPLY  = AIN1
+PIN_LED         = AIN3
+PIN_PWM_OUT     = IN7
+
+#TPignore
+def moveServoUp(servo):
+    if servo == LEFT:
+        setOutputPWM(PIN_SERVO_LEFT, POS_LEFT_UP, PWM_FREQUENCY)
+    elif servo == RIGHT:
+        setOutputPWM(PIN_SERVO_RIGHT, POS_RIGHT_UP, PWM_FREQUENCY)
+
+def moveServoDown(servo):
+    if servo == LEFT:
+        setOutputPWM(PIN_SERVO_LEFT, POS_LEFT_DOWN, PWM_FREQUENCY)
+    elif servo == RIGHT:
+        setOutputPWM(PIN_SERVO_RIGHT, POS_RIGHT_DOWN, PWM_FREQUENCY)
+
+def freeServos():
+    setOutputPWM(PIN_SERVO_LEFT,  POS_LEFT_FREE,  PWM_FREQUENCY)
+    setOutputPWM(PIN_SERVO_RIGHT, POS_RIGHT_FREE, PWM_FREQUENCY)
