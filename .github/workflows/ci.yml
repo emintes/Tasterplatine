@@ -46,7 +46,7 @@ jobs:
     - name: Run Test Docker Container
       run: |
         docker build -t test-executor https://github.com/emintes/action-test-executor.git#main
-        docker run --rm --device=/dev --privileged test-executor Testplatine
+        docker run --rm --device=/dev --privileged -v "${{ github.workspace }}:/workspace/repo" test-executor Testplatine
 
 #    - name: Run test
 #      uses: emintes/action-test-executor@main
