@@ -43,22 +43,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Run Test Docker Container
+    - name: Run Test
       env:
         test-path: "Tests"
       run: |
         docker build -t test-executor https://github.com/emintes/action-test-executor.git#main
-        docker run --rm --device=/dev --privileged -v "${{ github.workspace }}:/workspace/repo" test-executor ${{ env.test-path }}
+        docker run --device=/dev --privileged -v "${{ github.workspace }}:/workspace/repo" test-executor ${{ env.test-path }}
+        docker cp test-executor:/workspace/Testreport.html ./Tests/Testreport.html
 
-#    - name: Run test
-#      uses: emintes/action-test-executor@main
-#      with:
-#        name: 'Testplatine'
-
-
-
-#    - name: Upload test result artifact
-#      uses: actions/upload-artifact@v4
-#      with:
-#        name: testresult
-#        path: Tests/Testreport.html
+    - name: Upload Testreport artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: Testreport
+        path: Tests/Testreport.html
