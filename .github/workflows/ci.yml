@@ -48,8 +48,8 @@ jobs:
         test-path: "Tests"
       run: |
         sudo docker build -t test-executor https://github.com/emintes/action-test-executor.git#main
-        sudo docker run --device=/dev --privileged -v "${{ github.workspace }}:/workspace/repo" test-executor ${{ env.test-path }}
-        sudo docker cp test-executor:/workspace/Testreport.html ./Tests/Testreport.html
+        sudo docker run --name test-container --device=/dev --privileged -v "${{ github.workspace }}:/workspace/repo" test-executor ${{ env.test-path }}
+        sudo docker cp test-container:/workspace/Testreport.html ./Tests/Testreport.html
 
     - name: Upload Testreport artifact
       uses: actions/upload-artifact@v4
