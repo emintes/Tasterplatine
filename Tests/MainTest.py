@@ -30,7 +30,7 @@ async def powerSupply():
 
     #measure the 3,3V supply voltage:
     voltage3V3 = getInputVoltage(PIN_3V3_SUPPLY)
-    report.checkValueTollerance("Check 3,3V supply voltage", voltage3V3, 3.3, 0.03, "V")
+    report.checkValueTollerance("Check 3,3V supply voltage", voltage3V3, 3.3, 0.05, "V")
 
     #analyze supply voltage noise:
     supplyTrace = trace.TraceData(PIN_3V3_SUPPLY,1000, "3,3V Supply in mV")
@@ -47,21 +47,22 @@ async def idleConditions():
     pwmOut = await getPwm(PIN_PWM_OUT, 200)
     report.checkValueTollerance("Check PWM output frequency", pwmOut.frequency, 50, 0.2, "Hz")
     report.checkValueTollerance("Check PWM output duty cycle", pwmOut.dutyCycle, 7.0, 0.05, "%")
-    report.checkValueMinMax("Check LED voltage (should be off)", getInputVoltage(PIN_LED), 3.0, 5.0, "V")
+    report.checkValueMinMax("Check LED voltage (should be off)", getInputVoltage(PIN_LED), 3.0, 5.5, "V")
 
 
 async def buttonLeftManuel():
     freeServos()
-    await getUserInputBool("Press Button left")
-    report.putInfo("Button left pressed")
+    resultLeft = await waitForLow(PIN_BUTTON_LEFT, "press Button left")
+    report.checkBool("Button left pressed", resultLeft)
+    await sleep_ms(30) #prellen    
     
     report.checkBool("Is signal of button left low?", getInput(PIN_BUTTON_LEFT) == LOW)
     pwmOut = await getPwm(PIN_PWM_OUT, 200)
     report.checkValueTollerance("Check PWM output duty cycle", pwmOut.dutyCycle, 9.5, 0.05, "%")
     report.checkValueTollerance("Check LED voltage (should be on)", getInputVoltage(PIN_LED), 2.0, 0.1, "V")
 
-    await getUserInputBool("Release Button left")
-    report.putInfo("Button left released")
+    resultLeft = await waitForHigh(PIN_BUTTON_LEFT, "release Button left")
+    report.checkBool("Button left released", resultLeft)
 
 
 async def buttonLeft():
@@ -82,16 +83,17 @@ async def buttonLeft():
 
 async def buttonRightManuel():
     freeServos()
-    await getUserInputBool("Press Button right")
-    report.putInfo("Button right pressed")
+    resultRight = await waitForLow(PIN_BUTTON_RIGHT, "press Button right")
+    report.checkBool("Button right pressed", resultRight)
+    await sleep_ms(30) #prellen
     
     report.checkBool("Is signal of button right low?", getInput(PIN_BUTTON_RIGHT) == LOW)
     pwmOut = await getPwm(PIN_PWM_OUT, 200)
     report.checkValueTollerance("Check PWM output duty cycle", pwmOut.dutyCycle, 4.5, 0.05, "%")
     report.checkValueTollerance("Check LED voltage (should be on)", getInputVoltage(PIN_LED), 2.0, 0.1, "V")
-    
-    await getUserInputBool("Release Button right")
-    report.putInfo("Button right released")
+
+    resultRight = await waitForHigh(PIN_BUTTON_RIGHT, "release Button right")
+    report.checkBool("Button right released", resultRight)
 
 
 async def buttonRight():

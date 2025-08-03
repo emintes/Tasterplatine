@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ProjectSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <hasChanged>false</hasChanged>
+  <hasChanged>true</hasChanged>
   <ProjectName>Testplatine</ProjectName>
   <CreatedDateTime>2024-06-29T19:08:22.9848563+02:00</CreatedDateTime>
   <LastModifiedDateTime>0001-01-01T00:00:00</LastModifiedDateTime>
@@ -35,22 +35,22 @@
       <NumberOfRuns>1</NumberOfRuns>
     </Teststep>
     <Teststep>
-      <Active>false</Active>
-      <Name>MainTest buttonLeftManuel</Name>
-      <NumberOfRuns>1</NumberOfRuns>
-    </Teststep>
-    <Teststep>
-      <Active>false</Active>
+      <Active>true</Active>
       <Name>MainTest buttonRightManuel</Name>
       <NumberOfRuns>1</NumberOfRuns>
     </Teststep>
     <Teststep>
       <Active>true</Active>
+      <Name>MainTest buttonLeftManuel</Name>
+      <NumberOfRuns>1</NumberOfRuns>
+    </Teststep>
+    <Teststep>
+      <Active>false</Active>
       <Name>MainTest buttonLeft</Name>
       <NumberOfRuns>1</NumberOfRuns>
     </Teststep>
     <Teststep>
-      <Active>true</Active>
+      <Active>false</Active>
       <Name>MainTest buttonRight</Name>
       <NumberOfRuns>1</NumberOfRuns>
     </Teststep>
