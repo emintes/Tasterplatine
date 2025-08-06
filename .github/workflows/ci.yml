@@ -40,11 +40,8 @@ jobs:
         name: build-artifact
         path: ./firmware
 
-    - name: Unzip artifact content
-      run: unzip -o ./firmware/*.zip -d ./firmware/
-
     - name: Show files in firmware directory
-      run: ls ./firmware
+      run: ls -l ./firmware
 
     - name: Flash firmware
       run: st-flash write ./firmware/Testplatine.bin 0x8000000
