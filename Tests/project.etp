@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ProjectSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <hasChanged>true</hasChanged>
+  <hasChanged>false</hasChanged>
   <ProjectName>Testplatine</ProjectName>
   <CreatedDateTime>2024-06-29T19:08:22.9848563+02:00</CreatedDateTime>
   <LastModifiedDateTime>0001-01-01T00:00:00</LastModifiedDateTime>
@@ -9,8 +9,8 @@
   <TesterNameStr>Enrico</TesterNameStr>
   <ProjectFolder>C:\Users\Laptop\Documents\Emintes_lokal\4_Testplattform\Messe_Vorfuehrplatinen\Tasterplatine\Github\Tests</ProjectFolder>
   <AutoCreateReport>true</AutoCreateReport>
-  <CmdExeCommand1>st-flash</CmdExeCommand1>
-  <CmdExeParameter1>write Testplatine.bin 0x8000000</CmdExeParameter1>
+  <CmdExeCommand1>st-flash write ./repo/Testplatine.bin 0x8000000</CmdExeCommand1>
+  <CmdExeParameter1 />
   <CmdShowConsole1>true</CmdShowConsole1>
   <CmdExeCommand2 />
   <CmdExeParameter2 />
@@ -20,7 +20,7 @@
   <CmdShowConsole3>false</CmdShowConsole3>
   <TeststepList>
     <Teststep>
-      <Active>false</Active>
+      <Active>true</Active>
       <Name>MainTest downloadFirmware</Name>
       <NumberOfRuns>1</NumberOfRuns>
     </Teststep>
