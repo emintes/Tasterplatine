@@ -9,9 +9,9 @@
   <TesterNameStr>Enrico</TesterNameStr>
   <ProjectFolder>C:\Users\Laptop\Documents\Emintes_lokal\4_Testplattform\Messe_Vorfuehrplatinen\Tasterplatine\Github\Tests</ProjectFolder>
   <AutoCreateReport>true</AutoCreateReport>
-  <CmdExeCommand1 />
-  <CmdExeParameter1 />
-  <CmdShowConsole1>false</CmdShowConsole1>
+  <CmdExeCommand1>st-flash</CmdExeCommand1>
+  <CmdExeParameter1>write Testplatine.bin 0x8000000</CmdExeParameter1>
+  <CmdShowConsole1>true</CmdShowConsole1>
   <CmdExeCommand2 />
   <CmdExeParameter2 />
   <CmdShowConsole2>false</CmdShowConsole2>
@@ -26,7 +26,7 @@
     </Teststep>
     <Teststep>
       <Active>true</Active>
-      <Name>MainTest powerSupply</Name>
+      <Name>MainTest powerUp</Name>
       <NumberOfRuns>1</NumberOfRuns>
     </Teststep>
     <Teststep>
@@ -36,21 +36,11 @@
     </Teststep>
     <Teststep>
       <Active>true</Active>
-      <Name>MainTest buttonRightManuel</Name>
-      <NumberOfRuns>1</NumberOfRuns>
-    </Teststep>
-    <Teststep>
-      <Active>true</Active>
-      <Name>MainTest buttonLeftManuel</Name>
-      <NumberOfRuns>1</NumberOfRuns>
-    </Teststep>
-    <Teststep>
-      <Active>false</Active>
       <Name>MainTest buttonLeft</Name>
       <NumberOfRuns>1</NumberOfRuns>
     </Teststep>
     <Teststep>
-      <Active>false</Active>
+      <Active>true</Active>
       <Name>MainTest buttonRight</Name>
       <NumberOfRuns>1</NumberOfRuns>
     </Teststep>

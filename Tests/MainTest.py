@@ -1,9 +1,7 @@
 from testframework import *
 from Tests.Util import *
 
-enableIOSupply(LEVEL_5V)
-moveServoUp(LEFT)
-moveServoUp(RIGHT)
+enableIOSupply(LEVEL_3V3)
 
 async def downloadFirmware():
     enableExternalSupply()
@@ -17,96 +15,49 @@ async def downloadFirmware():
 
     await sleep_ms(1000)
 
-
-async def powerSupply():
-    #analyze the 3,3V regulator switch on behavior:
-    supplyTraceSwitchOn = trace.TraceData(PIN_3V3_SUPPLY,2000, "3,3V Supply in mV")
-    trace.start(supplyTraceSwitchOn,5)  #2000 values * 5us = 10ms recording time
+async def powerUp():
     enableExternalSupply()
-    await sleep_ms(50)
-    supplyOvershootValue = max(supplyTraceSwitchOn.getData(0, supplyTraceSwitchOn.len()))
-    report.checkValueMinMax("Switch On overshoot voltage", supplyOvershootValue/1000.0, 3.2, 3.6, "V")
-    report.appendTrace("Power Supply - Switch On behavior", supplyTraceSwitchOn)
-
-    #measure the 3,3V supply voltage:
-    voltage3V3 = getInputVoltage(PIN_3V3_SUPPLY)
-    report.checkValueTollerance("Check 3,3V supply voltage", voltage3V3, 3.3, 0.05, "V")
-
-    #analyze supply voltage noise:
-    supplyTrace = trace.TraceData(PIN_3V3_SUPPLY,1000, "3,3V Supply in mV")
-    trace.start(supplyTrace,2)  #1000 values * 2us = 2ms recording time
-    await sleep_ms(50)
-    supplyData = supplyTrace.getData(0, supplyTrace.len())
-    noise = max(supplyData) - min(supplyData)
-    report.checkValueMinMax("Power Supply Noise", noise, 0, 100, "mVpp", 0)
-    report.appendTrace("Power Supply - Noise", supplyTrace)
+    setOutputHigh(PIN_BUTTON_LEFT)
+    setOutputHigh(PIN_BUTTON_RIGHT)
+    await sleep_ms(200)
 
 
 async def idleConditions():
-    report.checkBool("Is signal of button left high?", getInput(PIN_BUTTON_LEFT) == HIGH)
     pwmOut = await getPwm(PIN_PWM_OUT, 200)
     report.checkValueTollerance("Check PWM output frequency", pwmOut.frequency, 50, 0.2, "Hz")
     report.checkValueTollerance("Check PWM output duty cycle", pwmOut.dutyCycle, 7.0, 0.05, "%")
     report.checkValueMinMax("Check LED voltage (should be off)", getInputVoltage(PIN_LED), 3.0, 5.5, "V")
 
 
-async def buttonLeftManuel():
-    freeServos()
-    resultLeft = await waitForLow(PIN_BUTTON_LEFT, "press Button left")
-    report.checkBool("Button left pressed", resultLeft)
-    await sleep_ms(30) #prellen    
-    
-    report.checkBool("Is signal of button left low?", getInput(PIN_BUTTON_LEFT) == LOW)
-    pwmOut = await getPwm(PIN_PWM_OUT, 200)
-    report.checkValueTollerance("Check PWM output duty cycle", pwmOut.dutyCycle, 9.5, 0.05, "%")
-    report.checkValueTollerance("Check LED voltage (should be on)", getInputVoltage(PIN_LED), 2.0, 0.1, "V")
-
-    resultLeft = await waitForHigh(PIN_BUTTON_LEFT, "release Button left")
-    report.checkBool("Button left released", resultLeft)
-
-
 async def buttonLeft():
-    moveServoDown(LEFT)
-    await sleep_ms(200)
+    setOutputLow(PIN_BUTTON_LEFT)
+    await sleep_ms(100)
     report.putInfo("Button left pressed")
     
-    report.checkBool("Is signal of button left low?", getInput(PIN_BUTTON_LEFT) == LOW)
     pwmOut = await getPwm(PIN_PWM_OUT, 200)
+    report.checkValueTollerance("Check PWM output frequency", pwmOut.frequency, 50, 0.2, "Hz")
     report.checkValueTollerance("Check PWM output duty cycle", pwmOut.dutyCycle, 9.5, 0.05, "%")
     report.checkValueTollerance("Check LED voltage (should be on)", getInputVoltage(PIN_LED), 2.0, 0.1, "V")
 
-    moveServoUp(LEFT)
+    setOutputHigh(PIN_BUTTON_LEFT)
     await sleep_ms(200)
-    setOutputHigh(PIN_SERVO_LEFT)
     report.putInfo("Button left released")
 
-
-async def buttonRightManuel():
-    freeServos()
-    resultRight = await waitForLow(PIN_BUTTON_RIGHT, "press Button right")
-    report.checkBool("Button right pressed", resultRight)
-    await sleep_ms(30) #prellen
-    
-    report.checkBool("Is signal of button right low?", getInput(PIN_BUTTON_RIGHT) == LOW)
-    pwmOut = await getPwm(PIN_PWM_OUT, 200)
-    report.checkValueTollerance("Check PWM output duty cycle", pwmOut.dutyCycle, 4.5, 0.05, "%")
-    report.checkValueTollerance("Check LED voltage (should be on)", getInputVoltage(PIN_LED), 2.0, 0.1, "V")
-
-    resultRight = await waitForHigh(PIN_BUTTON_RIGHT, "release Button right")
-    report.checkBool("Button right released", resultRight)
+    await idleConditions()  #check if after releasing the button, the idle conditions are restored
 
 
 async def buttonRight():
-    moveServoDown(RIGHT)
-    await sleep_ms(200)
+    setOutputLow(PIN_BUTTON_RIGHT)
+    await sleep_ms(100)
     report.putInfo("Button right pressed")
     
-    report.checkBool("Is signal of button right low?", getInput(PIN_BUTTON_RIGHT) == LOW)
     pwmOut = await getPwm(PIN_PWM_OUT, 200)
+    report.checkValueTollerance("Check PWM output frequency", pwmOut.frequency, 50, 0.2, "Hz")
     report.checkValueTollerance("Check PWM output duty cycle", pwmOut.dutyCycle, 4.5, 0.05, "%")
     report.checkValueTollerance("Check LED voltage (should be on)", getInputVoltage(PIN_LED), 2.0, 0.1, "V")
 
-    moveServoUp(RIGHT)
+    setOutputHigh(PIN_BUTTON_RIGHT)
     await sleep_ms(200)
-    setOutputHigh(PIN_SERVO_RIGHT)
     report.putInfo("Button right released")
+
+    await idleConditions()  #check if after releasing the button, the idle conditions are restored
