@@ -41,7 +41,9 @@ jobs:
         path: ./firmware
 
     - name: Show files in firmware directory
-      run: ls -l ./firmware
+      run: |
+        ls -l ./firmware
+        realpath firmware
 
     - name: Checkout code
       uses: actions/checkout@v3
@@ -51,8 +53,6 @@ jobs:
         echo "== github.workspace =="
         echo "${{ github.workspace }}"
         ls -la "${{ github.workspace }}"
-        echo "== firmware =="
-        ls -la "${{ github.workspace }}/firmware"
 
     - name: Run Test
       env:
