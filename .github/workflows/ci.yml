@@ -43,23 +43,6 @@ jobs:
         name: build-artifact
         path: ./firmware
 
-    - name: Show files in firmware directory
-      run: |
-        ls -l ./firmware
-        realpath firmware
-
-    - name: Show repo content
-      run: |
-        echo "== github.workspace =="
-        echo "${{ github.workspace }}"
-        ls -la "${{ github.workspace }}"
-
-    - name: 2 Show files in firmware directory
-      run: |
-        ls -l ./firmware
-        realpath firmware
-        ls
-
     - name: Run Test
       env:
         test-project-folder: "Tests"
@@ -72,7 +55,7 @@ jobs:
           -e TEST_PROJECT_FOLDER="${{ env.test-project-folder }}" \
           -e EXTRA_COMMANDS="${{ env.extra-commands }}" \
           test-executor
-        sudo docker cp test-container:/workspace/Testreport.html ./Tests/Testreport.html
+        sudo docker cp test-container:/workspace/repo/Tests/Reports/Testreport.html ./Tests/Reports/Testreport.html
         sudo docker rm test-container
 
     - name: Upload Testreport artifact
@@ -80,4 +63,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Testreport
-        path: Tests/Testreport.html
+        path: Tests/Reports/Testreport.html
