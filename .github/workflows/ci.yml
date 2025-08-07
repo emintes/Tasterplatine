@@ -46,6 +46,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: Show repo content
+      run: |
+        echo "== github.workspace =="
+        echo "${{ github.workspace }}"
+        ls -la "${{ github.workspace }}"
+        echo "== firmware =="
+        ls -la "${{ github.workspace }}/firmware"
+
     - name: Run Test
       env:
         test-project-folder: "Tests"
