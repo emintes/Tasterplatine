@@ -52,6 +52,7 @@ jobs:
         extra-commands: "tools/extra_commands.sh"
       run: |
         sudo docker build -t test-executor https://github.com/emintes/action-test-executor.git#main
+        sudo docker rm -f test-container || true
         sudo docker run --name test-container --device=/dev --privileged \
           -v "${{ github.workspace }}:/workspace/repo" \
           -e TEST_PROJECT_FOLDER="${{ env.test-project-folder }}" \
