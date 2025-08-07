@@ -54,6 +54,12 @@ jobs:
         echo "${{ github.workspace }}"
         ls -la "${{ github.workspace }}"
 
+    - name: 2 Show files in firmware directory
+      run: |
+        ls -l ./firmware
+        realpath firmware
+        ls
+
     - name: Run Test
       env:
         test-project-folder: "Tests"
