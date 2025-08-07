@@ -43,18 +43,20 @@ jobs:
     - name: Show files in firmware directory
       run: ls -l ./firmware
 
-    - name: Flash firmware
-      run: st-flash write ./firmware/Testplatine.bin 0x8000000
-
     - name: Checkout code
       uses: actions/checkout@v3
 
     - name: Run Test
       env:
-        test-path: "Tests"
+        test-project-folder: "Tests"
+        extra-commands: "tools/extra_commands.sh"
       run: |
         sudo docker build -t test-executor https://github.com/emintes/action-test-executor.git#main
-        sudo docker run --name test-container --device=/dev --privileged -v "${{ github.workspace }}:/workspace/repo" test-executor ${{ env.test-path }}
+        sudo docker run --name test-container --device=/dev --privileged \
+          -v "${{ github.workspace }}:/workspace/repo" \
+          -e TEST_PROJECT_FOLDER ="${{ env.test-project-folder }}" \
+          -e EXTRA_COMMANDS="${{ env.extra-commands }}" \
+          test-executor
         sudo docker cp test-container:/workspace/Testreport.html ./Tests/Testreport.html
         sudo docker rm test-container
 

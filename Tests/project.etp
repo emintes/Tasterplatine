@@ -9,7 +9,7 @@
   <TesterNameStr>Enrico</TesterNameStr>
   <ProjectFolder>C:\Users\Laptop\Documents\Emintes_lokal\4_Testplattform\Messe_Vorfuehrplatinen\Tasterplatine\Github\Tests</ProjectFolder>
   <AutoCreateReport>true</AutoCreateReport>
-  <CmdExeCommand1>st-flash write ./repo/Testplatine.bin 0x8000000</CmdExeCommand1>
+  <CmdExeCommand1>st-flash write ./repo/firmware/Testplatine.bin 0x8000000</CmdExeCommand1>
   <CmdExeParameter1 />
   <CmdShowConsole1>true</CmdShowConsole1>
   <CmdExeCommand2 />
