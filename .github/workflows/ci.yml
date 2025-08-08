@@ -44,18 +44,26 @@ jobs:
         path: ./firmware
 
     - name: Build Docker Container
-      run: sudo docker build -t test-executor https://github.com/emintes/action-test-executor.git#main
+      run: |
+        sudo docker build -t test-executor https://github.com/emintes/action-test-executor.git#main
+        sudo docker rm -f test-container || true
+
+    - name: Install st-link flashing tool
+      env:
+        extra-commands: "tools/extra_commands.sh"
+      run: |
+        sudo docker run --entrypoint workspace/runExtraCommands.sh --name test-container --device=/dev --privileged \
+          -v "${{ github.workspace }}:/workspace/repo" \
+          -e EXTRA_COMMANDS="${{ env.extra-commands }}" \
+          test-executor
 
     - name: Run Test
       env:
         test-project-folder: "Tests"
-        extra-commands: "tools/extra_commands.sh"
       run: |
-        sudo docker rm -f test-container || true
-        sudo docker run --rm --name test-container --device=/dev --privileged \
+        sudo docker run --rm --entrypoint workspace/runTest.sh --name test-container --device=/dev --privileged \
           -v "${{ github.workspace }}:/workspace/repo" \
           -e TEST_PROJECT_FOLDER="${{ env.test-project-folder }}" \
-          -e EXTRA_COMMANDS="${{ env.extra-commands }}" \
           test-executor
 
     - name: Upload Testreport artifact
