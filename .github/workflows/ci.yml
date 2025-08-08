@@ -52,7 +52,7 @@ jobs:
       env:
         extra-commands: "tools/extra_commands.sh"
       run: |
-        sudo docker run --entrypoint workspace/runExtraCommands.sh --name test-container --device=/dev --privileged \
+        sudo docker run --entrypoint /workspace/runExtraCommands.sh --name test-container --device=/dev --privileged \
           -v "${{ github.workspace }}:/workspace/repo" \
           -e EXTRA_COMMANDS="${{ env.extra-commands }}" \
           test-executor
@@ -61,7 +61,7 @@ jobs:
       env:
         test-project-folder: "Tests"
       run: |
-        sudo docker run --rm --entrypoint workspace/runTest.sh --name test-container --device=/dev --privileged \
+        sudo docker run --rm --entrypoint /workspace/runTest.sh --name test-container --device=/dev --privileged \
           -v "${{ github.workspace }}:/workspace/repo" \
           -e TEST_PROJECT_FOLDER="${{ env.test-project-folder }}" \
           test-executor
