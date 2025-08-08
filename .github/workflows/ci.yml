@@ -57,15 +57,6 @@ jobs:
           -e TEST_PROJECT_FOLDER="${{ env.test-project-folder }}" \
           -e EXTRA_COMMANDS="${{ env.extra-commands }}" \
           test-executor
-        echo "---------------"
-        echo "<ls>"
-        ls
-        echo "<ls Tests>"
-        ls Tests
-        echo "<ls Tests/Reports>"
-        ls Tests/Reorts
-        echo "---------------"
-        sudo docker cp test-container:/workspace/repo/${{ env.test-project-folder }}/Reports/Testreport.html ./Tests/Reports/Testreport.html
         sudo docker rm test-container
 
     - name: Upload Testreport artifact
