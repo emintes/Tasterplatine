@@ -52,15 +52,13 @@ jobs:
         extra-commands: "tools/extra_commands.sh"
       run: |
         sudo docker rm -f test-container || true
-        sudo docker run --name test-container --device=/dev --privileged \
+        sudo docker run --rm --name test-container --device=/dev --privileged \
           -v "${{ github.workspace }}:/workspace/repo" \
           -e TEST_PROJECT_FOLDER="${{ env.test-project-folder }}" \
           -e EXTRA_COMMANDS="${{ env.extra-commands }}" \
           test-executor
-        sudo docker rm test-container
 
     - name: Upload Testreport artifact
-      if: always()
       uses: actions/upload-artifact@v4
       with:
         name: Testreport
