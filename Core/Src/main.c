@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "app.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -31,10 +31,6 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
-#define SERVO_POS_LEFT 		1900
-#define SERVO_POS_MIDDLE 	1400
-#define SERVO_POS_RIGHT 	900
 
 /* USER CODE END PD */
 
@@ -94,8 +90,7 @@ int main(void)
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
 
-  TIM3->CCR1 = SERVO_POS_MIDDLE;
-  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+  app_init();
 
   /* USER CODE END 2 */
 
@@ -103,34 +98,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	// If button left is pressed
-	if(HAL_GPIO_ReadPin (GPIOA, GPIO_PIN_2) == GPIO_PIN_RESET)
-	{
-		// Set the LED on
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);
-
-		// Set PWM for Servo
-		TIM3->CCR1 = SERVO_POS_LEFT;
-	}
-	// If button right is pressed
-	else if(HAL_GPIO_ReadPin (GPIOA, GPIO_PIN_4) == GPIO_PIN_RESET)
-	{
-		// Set the LED on
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);
-
-		// Set PWM for Servo
-		TIM3->CCR1 = SERVO_POS_RIGHT;
-	}
-	//if no button is pressed
-	else
-	{
-		// Set the LED off
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);
-
-		// Set PWM for Servo
-		TIM3->CCR1 = SERVO_POS_MIDDLE;
-	}
-
+	app_run();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

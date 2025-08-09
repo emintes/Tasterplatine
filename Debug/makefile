@@ -12,6 +12,7 @@ RM := rm -rf
 -include Drivers/STM32G0xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
+-include App/Src/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -66,8 +67,8 @@ all: main-build
 main-build: Testplatine.elf secondary-outputs
 
 # Tool invocations
-Testplatine.elf Testplatine.map: $(OBJS) $(USER_OBJS) ../STM32G071KBTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Testplatine.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"../STM32G071KBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Testplatine.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Testplatine.elf Testplatine.map: $(OBJS) $(USER_OBJS) C:\Users\Laptop\Documents\Emintes_lokal\4_Testplattform\Messe_Vorfuehrplatinen\Tasterplatine\Github\STM32G071KBTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Testplatine.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"C:\Users\Laptop\Documents\Emintes_lokal\4_Testplattform\Messe_Vorfuehrplatinen\Tasterplatine\Github\STM32G071KBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Testplatine.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
