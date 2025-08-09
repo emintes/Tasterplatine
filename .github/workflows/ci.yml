@@ -52,7 +52,7 @@ jobs:
           -v "${{ github.workspace }}:/workspace/repo" \
           -e TEST_PROJECT_FOLDER="${{ env.test-project-folder }}" \
           -e EXTRA_COMMANDS="${{ env.extra-commands }}" \
-          test-executor
+          emintes/testplattform:arm64
 
 
 #    - name: Build Docker Container
