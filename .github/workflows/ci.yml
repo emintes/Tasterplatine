@@ -43,20 +43,32 @@ jobs:
         name: build-artifact
         path: ./firmware
 
-    - name: Build Docker Container
-      run: sudo docker build -t test-executor https://github.com/emintes/action-test-executor.git#main
-
     - name: Run Test
       env:
         test-project-folder: "Tests"
-        extra-commands: "tools/extra_commands.sh"
       run: |
-        sudo docker rm -f test-container || true
-        sudo docker run --rm --name test-container --device=/dev --privileged \
+        docker pull emintes/testplattform:arm64
+        docker run --rm --name test-container --device=/dev --privileged \
           -v "${{ github.workspace }}:/workspace/repo" \
           -e TEST_PROJECT_FOLDER="${{ env.test-project-folder }}" \
           -e EXTRA_COMMANDS="${{ env.extra-commands }}" \
           test-executor
+
+
+#    - name: Build Docker Container
+#      run: sudo docker build -t test-executor https://github.com/emintes/action-test-executor.git#main#
+#
+#    - name: Run Test
+#      env:
+#        test-project-folder: "Tests"
+#        extra-commands: "tools/extra_commands.sh"
+#      run: |
+#        sudo docker rm -f test-container || true
+#        sudo docker run --rm --name test-container --device=/dev --privileged \
+#          -v "${{ github.workspace }}:/workspace/repo" \
+#          -e TEST_PROJECT_FOLDER="${{ env.test-project-folder }}" \
+#          -e EXTRA_COMMANDS="${{ env.extra-commands }}" \
+#          test-executor
 
     - name: Upload Testreport artifact
       uses: actions/upload-artifact@v4
