@@ -19,7 +19,7 @@ void app_run()
 	if(button_leftPressed())
 	{
 		led_on();
-		servo_setPosition(SERVO_POS_RIGHT);
+		servo_setPosition(SERVO_POS_LEFT);
 	}
 	else if(button_rightPressed())
 	{
