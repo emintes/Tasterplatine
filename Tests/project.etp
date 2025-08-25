@@ -47,4 +47,196 @@
   </TeststepList>
   <ExcludedTeststeps />
   <AdditionalFiles />
+  <Documentation>
+    <DocumentationEntry>
+      <SignalTestsystem>Analog Output 1</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Analog Output 2</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Analog Input 1</SignalTestsystem>
+      <SignalDUT>TP6</SignalDUT>
+      <Comment>3,3V Supply</Comment>
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Analog Input 2</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Analog Input 3</SignalTestsystem>
+      <SignalDUT>TP3</SignalDUT>
+      <Comment>LED</Comment>
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Analog Input 4</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Analog Input 5</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Analog Input 6</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Analog Input 7</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Analog Input 8</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Digital Output 1</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Digital Output 2</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Digital Output 3</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Digital Output 4</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Digital Output 5</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Digital Output 6</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Digital Output 7</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Digital Output 8</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Digital Output 9</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Digital Output 10</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Digital Output 11</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Digital Output 12</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Digital Input 1</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Digital Input 2</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Digital Input 3</SignalTestsystem>
+      <SignalDUT>TP4</SignalDUT>
+      <Comment>Button Left</Comment>
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Digital Input 4</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Digital Input 5</SignalTestsystem>
+      <SignalDUT>TP5</SignalDUT>
+      <Comment>Button Right</Comment>
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Digital Input 6</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Digital Input 7</SignalTestsystem>
+      <SignalDUT>TP37</SignalDUT>
+      <Comment>Servo PWM Signal</Comment>
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Digital Input 8</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Digital Input 9</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Digital Input 10</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Digital Input 11</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem>Digital Input 12</SignalTestsystem>
+      <SignalDUT />
+      <Comment />
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem />
+      <SignalDUT>TP8</SignalDUT>
+      <Comment>SWDIO</Comment>
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem />
+      <SignalDUT>TP9</SignalDUT>
+      <Comment>SWCLK</Comment>
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem />
+      <SignalDUT>TP10</SignalDUT>
+      <Comment>RESET</Comment>
+    </DocumentationEntry>
+    <DocumentationEntry>
+      <SignalTestsystem />
+      <SignalDUT>TP11</SignalDUT>
+      <Comment>GND</Comment>
+    </DocumentationEntry>
+  </Documentation>
 </ProjectSettings>
