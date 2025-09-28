@@ -47,11 +47,13 @@ jobs:
     - name: Run Test
       env:
         test-project-folder: "Tests"
+        test-project-file: "projectCICD.etp"
       run: |
         docker pull emintes/testplattform:arm64
         docker run --rm --name test-container --device=/dev --privileged \
           -v "${{ github.workspace }}:/workspace/repo" \
           -e TEST_PROJECT_FOLDER="${{ env.test-project-folder }}" \
+          -e TEST_PROJECT_FILE="${{ env.test-project-file }}" \
           -e EXTRA_COMMANDS="${{ env.extra-commands }}" \
           emintes/testplattform:arm64
 

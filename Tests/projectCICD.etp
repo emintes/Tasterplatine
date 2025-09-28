@@ -20,7 +20,7 @@
   <CmdShowConsole3>false</CmdShowConsole3>
   <TeststepList>
     <Teststep>
-      <Active>false</Active>
+      <Active>true</Active>
       <Name>MainTest downloadFirmware</Name>
       <NumberOfRuns>1</NumberOfRuns>
     </Teststep>
