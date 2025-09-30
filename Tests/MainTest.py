@@ -1,8 +1,6 @@
 from testframework import *
 from Tests.Util import *
 
-enableIOSupply(LEVEL_3V3)
-
 async def downloadFirmware():
     enableExternalSupply()
     await sleep_ms(800)
@@ -17,6 +15,7 @@ async def downloadFirmware():
 
 async def powerUp():
     enableExternalSupply()
+    enableIOSupply(LEVEL_3V3)
     setOutputHigh(PIN_BUTTON_LEFT)
     setOutputHigh(PIN_BUTTON_RIGHT)
     await sleep_ms(200)
