@@ -11,6 +11,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+      with:
+        ref: 'demo'
 
     - name: Build STM32CubeIde project
       uses: xanderhendriks/action-build-stm32cubeide@v11.0
