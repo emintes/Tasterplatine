@@ -14,6 +14,23 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: Cache STM32CubeIDE image
+      id: stm32cubeide-cache
+      uses: actions/cache@v4
+      with:
+        path: /tmp/docker-cache/stm32cubeide-11.0.tar
+        key: stm32cubeide-11.0
+
+    - name: Load STM32CubeIDE image
+      run: |
+        if [ -f /tmp/docker-cache/stm32cubeide-11.0.tar ]; then
+          docker load -i /tmp/docker-cache/stm32cubeide-11.0.tar
+        else
+          mkdir -p /tmp/docker-cache
+          docker pull xanderhendriks/stm32cubeide:11.0
+          docker save xanderhendriks/stm32cubeide:11.0 -o /tmp/docker-cache/stm32cubeide-11.0.tar
+        fi
+
     - name: Build STM32CubeIde project
       uses: xanderhendriks/action-build-stm32cubeide@v11.0
       with:
