@@ -31,15 +31,24 @@ jobs:
           docker save xanderhendriks/stm32cubeide:11.0 -o /tmp/docker-cache/stm32cubeide-11.0.tar
         fi
 
-    - name: Build STM32CubeIde project
-      uses: xanderhendriks/action-build-stm32cubeide@v11.0
-      with:
-        project-path: '.'
-        project-target: 'Testplatine'
+    - name: Build STM32CubeIDE project
       env:
+        PROJECT_PATH: '.'
+        PROJECT_TARGET: 'Testplatine'
         ENV_VERSION_MAJOR: 1
         ENV_VERSION_MINOR: 0
         ENV_VERSION_BUGFIX: 0
+      run: |
+        docker run --rm \
+          -v "${{ github.workspace }}:/workspace/repo" \
+          -w /workspace/repo \
+          -e PROJECT_PATH \
+          -e PROJECT_TARGET \
+          -e ENV_VERSION_MAJOR \
+          -e ENV_VERSION_MINOR \
+          -e ENV_VERSION_BUGFIX \
+          xanderhendriks/stm32cubeide:11.0 \
+          bash -lc 'stm32cubeide --launcher.suppressErrors -nosplash -application org.eclipse.cdt.managedbuilder.core.headlessbuild -no-indexer -data /tmp/stm-workspace -importAll "$PROJECT_PATH" && headless-build.sh -no-indexer -data /tmp/stm-workspace -build "$PROJECT_TARGET"'
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
